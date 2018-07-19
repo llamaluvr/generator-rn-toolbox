@@ -48,6 +48,11 @@ class ResourcesGenerator extends Base {
       desc: 'The name of the asset',
       default: 'AppIcon',
     });
+    this.option('iosXcassetsFolderName', {
+      type: asset => asset,
+      desc: 'The name of the xcassets folder',
+      default: 'Images',
+    });
   }
 
   initializing() {
@@ -122,7 +127,7 @@ class ResourcesGenerator extends Base {
 
     const iosIconFolder = `${this.options.assetsOutputPath}/ios/${
       this.projectName
-    }/Images.xcassets/${this.options.iosAssetName}.appiconset`;
+    }/${this.options.iosXcassetsFolderName}.xcassets/${this.options.iosAssetName}.appiconset`;
 
     this.fs.copyTpl(
       this.templatePath('ios/AppIconsetContents.json'),
